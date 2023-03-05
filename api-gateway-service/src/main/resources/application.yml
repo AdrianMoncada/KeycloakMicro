@@ -18,10 +18,18 @@ spring:
       default-filters:
         - TokenRelay
       routes:
-        - id: #nombre del proyecto
+        - id: api-movies
           uri: # http://localhost: puerto del proyecto
           predicates:
-            - Path=/ # endpoint
+            - Path= /movies
+        - id: users-service
+          uri: # http://localhost: puerto del proyecto
+          predicates:
+            - Path= /user
+        - id: api-facturacion
+          uri: # http://localhost: puerto del proyecto
+          predicates:
+            - Path= / #endpoint api-facturación (?)
 
 server:
   port: 9090
