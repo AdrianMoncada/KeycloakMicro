@@ -1,0 +1,27 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak-provider:
+            issuer-uri: http://localhost:8082/realms/digitalmedia
+        registration:
+          api-gateway-service:
+            provider: keycloak-provider
+            client-id: api-gateway-client
+            client-secret: #falta secret
+            authorization-grant-type: authorization_code
+            redirect-uri: 'http://localhost:9090/login/oauth2/code/keycloak'
+
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay
+      routes:
+        - id: #nombre del proyecto
+          uri: # http://localhost: puerto del proyecto
+          predicates:
+            - Path=/ # endpoint
+
+server:
+  port: 9090
