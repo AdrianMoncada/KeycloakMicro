@@ -9,7 +9,7 @@ spring:
           api-gateway-service:
             provider: keycloak-provider
             client-id: api-gateway-client
-            client-secret: #falta secret
+            client-secret: UW5WIVaBtuRw0z9KaiS3cgCWDippzdqX
             authorization-grant-type: authorization_code
             redirect-uri: 'http://localhost:9090/login/oauth2/code/keycloak'
 
@@ -19,17 +19,17 @@ spring:
         - TokenRelay
       routes:
         - id: api-movies
-          uri: # http://localhost: puerto del proyecto
+          uri: "http://localhost:8085/movies"
           predicates:
             - Path= /movies
         - id: users-service
-          uri: # http://localhost: puerto del proyecto
+          uri: "http://localhost:8086/"
           predicates:
             - Path= /user
-        - id: api-facturacion
-          uri: # http://localhost: puerto del proyecto
-          predicates:
-            - Path= / #endpoint api-facturación (?)
+#        - id: api-facturacion
+#          uri: # http://localhost: puerto del proyecto
+#          predicates:
+#            - Path= / #endpoint api-facturación (?)
 
 server:
   port: 9090
