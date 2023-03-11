@@ -14,7 +14,7 @@ services:
       - local-keycloak
     volumes:
       - db:/var/lib/postgresql/data
-  mongocontenedor:
+  mongomoviescontenedor:
     image: mongo
     container_name: mongocontenedor
     restart: always
@@ -24,6 +24,36 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: 'pwdmongo'
     ports:
       - 27018:27017
+    expose:
+      - 27017
+    volumes:
+      - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-2-init.js:ro
+
+  mongobillcontenedor:
+    image: mongo
+    container_name: mongobillcontenedor
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'devmongo'
+      MONGO_INITDB_ROOT_USERNAME: 'usrmongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwdmongo'
+    ports:
+      - 27019:27017
+    expose:
+      - 27017
+    volumes:
+      - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-2-init.js:ro
+
+  mongousercontenedor:
+    image: mongo
+    container_name: mongousercontenedor
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'devmongo'
+      MONGO_INITDB_ROOT_USERNAME: 'usrmongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwdmongo'
+    ports:
+      - 27020:27017
     expose:
       - 27017
     volumes:

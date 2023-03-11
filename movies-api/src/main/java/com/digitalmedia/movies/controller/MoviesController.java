@@ -37,11 +37,11 @@ public class MoviesController {
 
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_user')")
-    public List<MovieDto> getMovies() {
-        return movieService.getMovies().stream()
+    public String getMovies() {
+        return "Funciona";
+        /*return movieService.getMovies().stream()
                 .map(movieMapper::toMovieDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
     }
 
     @GetMapping("/{imdbId}")
