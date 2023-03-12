@@ -5,13 +5,13 @@ spring:
         jwt:
           jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
   application:
-    name: movies-service
+    name: users-service
   data:
     mongodb:
       username: usrmongo
       password: pwdmongo
-      database: moviesmongo
-      port: 27018
+      database: usermongo
+      port: 27019
       host: localhost
   main:
     allow-circular-references: true
@@ -19,7 +19,19 @@ spring:
 app:
   cors:
     allowed-origins: http://localhost:3000
+#
+#eureka:
+#  client:
+#    enabled: false
 
+server:
+  port: 8086
+
+#springdoc:
+#  show-actuator: true
+#  swagger-ui:
+#    groups-order: DESC
+#    disable-swagger-default-url: true
 #management:
 #  endpoints:
 #    web:
@@ -27,18 +39,3 @@ app:
 #  endpoint:
 #    health:
 #      show-details: always
-#
-#springdoc:
-#  show-actuator: true
-#  swagger-ui:
-#    groups-order: DESC
-#    disable-swagger-default-url: true
-server:
-  port: 8085
-
-#  eureka:
-#    client:
-#      registerWithEureka: false
-#      fetchRegistry: true
-#      serviceURL:
-#        defaultZone: http://localhost:8761/eureka
