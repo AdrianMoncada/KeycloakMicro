@@ -8,6 +8,10 @@ spring:
           uri: http://localhost:9191
           predicates:
             - Path=/product/**
+        - id: movies-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/movies/**
   security:
     oauth2:
       client:

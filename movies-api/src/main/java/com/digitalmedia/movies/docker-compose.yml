@@ -1,0 +1,85 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - '5439:5439'
+    networks:
+      - local-keycloak
+    volumes:
+      - db:/var/lib/postgresql/data
+  mongomoviescontenedor:
+    image: mongo
+    container_name: mongocontenedor
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'devmongo'
+      MONGO_INITDB_ROOT_USERNAME: 'usrmongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwdmongo'
+    ports:
+      - 27018:27017
+    expose:
+      - 27017
+    volumes:
+      - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-2-init.js:ro
+
+  mongobillcontenedor:
+    image: mongo
+    container_name: mongobillcontenedor
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'devmongo'
+      MONGO_INITDB_ROOT_USERNAME: 'usrmongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwdmongo'
+    ports:
+      - 27019:27017
+    expose:
+      - 27017
+    volumes:
+      - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-2-init.js:ro
+
+  mongousercontenedor:
+    image: mongo
+    container_name: mongousercontenedor
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'devmongo'
+      MONGO_INITDB_ROOT_USERNAME: 'usrmongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwdmongo'
+    ports:
+      - 27020:27017
+    expose:
+      - 27017
+    volumes:
+      - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-2-init.js:ro
+
+  keycloak:
+    depends_on:
+      - postgres
+    container_name: local_keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_PASSWORD: 1234
+      KC_DB_USERNAME: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+    image: quay.io/keycloak/keycloak:18.0.0
+    command: start-dev
+    ports:
+      - "8082:8080"
+    restart: unless-stopped
+    networks:
+      - local-keycloak
+
+networks:
+  local-keycloak:
+
+volumes:
+  db:
