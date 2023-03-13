@@ -19,8 +19,8 @@ public class UserController {
   private final IUserService userService;
 
   @GetMapping("/admin")
-  /*@PreAuthorize("hasRole('ROLE_admin')")*/
-  @RolesAllowed({"product_read"})
+  @PreAuthorize("hasRole('ROLE_product_read')")
+  /*@RolesAllowed({"product_read"})*/
   public String siEsAdmin(){
     return "Funciona!";
   }
