@@ -15,6 +15,11 @@ public class BillController {
 
   private final BillService service;
 
+  @GetMapping
+  public String funciona() {
+    return "Funciona!";
+  }
+
   @GetMapping("/all")
   public ResponseEntity<List<Bill>> getAll() {
     return ResponseEntity.ok().body(service.getAllBill());

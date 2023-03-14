@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name= "ms-bills", url="http://localhost:8086", configuration = FeignInterceptor.class)
 public interface FeignBillingRepository {
 
-    @RequestMapping(method= RequestMethod.GET, value="/bills/findByCustomer")
-    ResponseEntity<Bill> findBillByCustomer(@RequestParam String customer);
+    /*@RequestMapping(method= RequestMethod.GET, value="/bills/findByCustomer")
+    ResponseEntity<Bill> findBillByCustomer(@RequestParam String customer);*/
+
+    @RequestMapping(method= RequestMethod.GET, value="/bills/funciona")
+    String funcionaUser();
 }

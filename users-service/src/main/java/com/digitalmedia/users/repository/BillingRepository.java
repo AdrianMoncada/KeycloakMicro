@@ -1,5 +1,4 @@
 package com.digitalmedia.users.repository;
-
 import com.digitalmedia.users.model.Bill;
 import org.springframework.http.ResponseEntity;
 
@@ -11,8 +10,12 @@ public class BillingRepository {
         this.feignBillingRepository = feignBillingRepository;
     }
 
-    public Bill findBillByCustomer(String customer){
+    /*public Bill findBillByCustomer(String customer){
         ResponseEntity<Bill> response = feignBillingRepository.findBillByCustomer(customer);
         return response.getBody();
+    }*/
+
+    public String findBillByCustomer(String customer){
+        return feignBillingRepository.funcionaUser();
     }
 }
