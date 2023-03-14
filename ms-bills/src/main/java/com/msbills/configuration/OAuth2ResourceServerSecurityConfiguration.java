@@ -18,7 +18,6 @@ public class OAuth2ResourceServerSecurityConfiguration extends WebSecurityConfig
     }
     @Bean
     public JwtDecoder jwtDecoder() {
-        return NimbusJwtDecoder.withJwkSetUri("http://localhost:8082/realms/digital-house/protocol/openid-connect/certs").build();
+        return NimbusJwtDecoder.withJwkSetUri("http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs").build();
     }
-
 }

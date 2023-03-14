@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface BillRepository extends JpaRepository<Bill, String> {
 
   Optional<Bill> findByCustomerBill(String customer);
+
+  public String funciona();
 }

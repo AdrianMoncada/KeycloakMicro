@@ -25,6 +25,9 @@ public class UserController {
     return "Funciona!";
   }
 
+  @GetMapping("/pruebaFeign")
+  public String funciona(){ return "Funciona!";}
+
 
   @GetMapping("/me")
   @PreAuthorize("hasRole('ROLE_admin') AND hasAutority('GROUP_admin')")
@@ -39,5 +42,7 @@ public class UserController {
     userExtra.setAvatar(updateUserRequest.getAvatar());
     return userService.saveUserExtra(userExtra);
   }
+
+
 
 }
