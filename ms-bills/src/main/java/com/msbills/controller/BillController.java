@@ -15,10 +15,7 @@ public class BillController {
 
   private final BillService service;
 
-  @GetMapping
-  public String funciona() {
-    return "Funciona!";
-  }
+
 
   @GetMapping("/all")
   public ResponseEntity<List<Bill>> getAll() {
@@ -39,6 +36,7 @@ public class BillController {
     }
     return ResponseEntity.notFound().build();
   }
+
 
 
 }

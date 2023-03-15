@@ -1,17 +1,13 @@
-package com.msbills.configuration.feign;
+package com.digitalmedia.users.configuration.feign;
 
 import feign.RequestInterceptor;
-import lombok.Builder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.*;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
-
 @Configuration
 public class OAuthFeignConfig {
-
     public static final String CLIENT_REGISTRATION_ID = "keycloak";
 
     private final OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
@@ -47,5 +43,4 @@ public class OAuthFeignConfig {
         authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
         return authorizedClientManager;
     }
-
 }

@@ -21,6 +21,15 @@ spring:
       path: /h2-console
   security:
     oauth2:
+      client:
+        registration:
+          keycloak:
+            authorization-grant-type: client_credentials
+            client-id: test
+            client-secret: abc
+        provider:
+          keycloak:
+            token-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs

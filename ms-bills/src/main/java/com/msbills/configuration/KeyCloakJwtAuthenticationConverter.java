@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.core.convert.converter.Converter;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -18,7 +19,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class KeyCloakJwtAuthenticationConverter {
+public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken>{
 
     private final JwtGrantedAuthoritiesConverter defaultGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
@@ -75,8 +76,10 @@ public class KeyCloakJwtAuthenticationConverter {
         return new JwtAuthenticationToken(source, authorities);
     }
 
-    public Collection<GrantedAuthority> getGrantedAuthorities(Jwt source) throws JsonProcessingException {
+   public Collection<GrantedAuthority> getGrantedAuthorities(Jwt source) throws JsonProcessingException {
         return (Collection) Stream.concat(this.defaultGrantedAuthoritiesConverter.convert(source).stream(), extractResourceRoles(source).stream()).collect(Collectors.toSet());
     }
+
+
 
 }

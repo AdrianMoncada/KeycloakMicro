@@ -25,6 +25,5 @@ public class BillService {
     return repository.findByCustomerBill(customer).orElse(null);
   }
 
-  public String funciona(){return repository.funciona();}
 
 }
