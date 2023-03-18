@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-01T20:50:05-0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-03-08T20:31:48-0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 18.0.2-ea (Private Build)"
 )
 @Component
 public class MovieMapperImpl extends MovieMapper {

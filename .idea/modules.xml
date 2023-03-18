@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/KeycloakMicro.iml" filepath="$PROJECT_DIR$/.idea/KeycloakMicro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway-service/api-gateway-service.iml" filepath="$PROJECT_DIR$/api-gateway-service/api-gateway-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/configServer.iml" filepath="$PROJECT_DIR$/config-server/configServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eurekaServer.iml" filepath="$PROJECT_DIR$/eureka-server/eurekaServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/movies-api/movies-api.iml" filepath="$PROJECT_DIR$/movies-api/movies-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/users-service/users-service.iml" filepath="$PROJECT_DIR$/users-service/users-service.iml" />
+    </modules>
+  </component>
+</project>

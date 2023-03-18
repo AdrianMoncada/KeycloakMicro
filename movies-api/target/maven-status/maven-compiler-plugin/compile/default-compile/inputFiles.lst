@@ -1,0 +1,16 @@
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/model/Movie.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/model/dto/AddCommentRequest.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/security/KeyCloakJwtAuthenticationConverter.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/model/dto/MovieDto.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/repository/MovieRepository.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/mapper/MovieMapper.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/MoviesApiApplication.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/config/SwaggerConfig.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/service/MovieService.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/model/dto/CreateMovieRequest.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/controller/MoviesController.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/model/dto/UpdateMovieRequest.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/service/MovieServiceImpl.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/exception/MovieNotFoundException.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/security/OAuth2ResourceServerSecurityConfiguration.java
+/home/lucila/Documents/webmedata/entrepriseSecurity/KeycloakMicro/movies-api/src/main/java/com/digitalmedia/movies/config/ErrorAttributesConfig.java
