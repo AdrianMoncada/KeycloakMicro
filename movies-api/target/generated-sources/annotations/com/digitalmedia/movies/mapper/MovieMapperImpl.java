@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-08T20:31:48-0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 18.0.2-ea (Private Build)"
+    date = "2023-03-18T15:14:38-0300",
+    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 3.33.0.v20230218-1114, environment: Java 17.0.6 (Eclipse Adoptium)"
 )
 @Component
 public class MovieMapperImpl extends MovieMapper {
@@ -27,11 +27,11 @@ public class MovieMapperImpl extends MovieMapper {
 
         Movie movie = new Movie();
 
-        movie.setImdbId( createMovieRequest.getImdbId() );
-        movie.setTitle( createMovieRequest.getTitle() );
         movie.setDirector( createMovieRequest.getDirector() );
-        movie.setYear( createMovieRequest.getYear() );
+        movie.setImdbId( createMovieRequest.getImdbId() );
         movie.setPoster( createMovieRequest.getPoster() );
+        movie.setTitle( createMovieRequest.getTitle() );
+        movie.setYear( createMovieRequest.getYear() );
 
         return movie;
     }
@@ -42,17 +42,17 @@ public class MovieMapperImpl extends MovieMapper {
             return;
         }
 
-        if ( updateMovieRequest.getTitle() != null ) {
-            movie.setTitle( updateMovieRequest.getTitle() );
-        }
         if ( updateMovieRequest.getDirector() != null ) {
             movie.setDirector( updateMovieRequest.getDirector() );
         }
-        if ( updateMovieRequest.getYear() != null ) {
-            movie.setYear( updateMovieRequest.getYear() );
-        }
         if ( updateMovieRequest.getPoster() != null ) {
             movie.setPoster( updateMovieRequest.getPoster() );
+        }
+        if ( updateMovieRequest.getTitle() != null ) {
+            movie.setTitle( updateMovieRequest.getTitle() );
+        }
+        if ( updateMovieRequest.getYear() != null ) {
+            movie.setYear( updateMovieRequest.getYear() );
         }
     }
 
@@ -64,12 +64,12 @@ public class MovieMapperImpl extends MovieMapper {
 
         MovieDto movieDto = new MovieDto();
 
-        movieDto.setImdbId( movie.getImdbId() );
-        movieDto.setTitle( movie.getTitle() );
-        movieDto.setDirector( movie.getDirector() );
-        movieDto.setYear( movie.getYear() );
-        movieDto.setPoster( movie.getPoster() );
         movieDto.setComments( commentListToCommentDtoList( movie.getComments() ) );
+        movieDto.setDirector( movie.getDirector() );
+        movieDto.setImdbId( movie.getImdbId() );
+        movieDto.setPoster( movie.getPoster() );
+        movieDto.setTitle( movie.getTitle() );
+        movieDto.setYear( movie.getYear() );
 
         return movieDto;
     }
@@ -82,9 +82,9 @@ public class MovieMapperImpl extends MovieMapper {
 
         CommentDto commentDto = new CommentDto();
 
-        commentDto.setUsername( comment.getUsername() );
         commentDto.setText( comment.getText() );
         commentDto.setTimestamp( comment.getTimestamp() );
+        commentDto.setUsername( comment.getUsername() );
 
         return commentDto;
     }

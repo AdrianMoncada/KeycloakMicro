@@ -44,7 +44,7 @@ Ingresar al panel de administración con las credenciales establecidas en el arc
 • username:admin
 • password: admin
 
-Una vez autenticado, crear un nuevo reino a partir del archivo DigitalMedia.json que está en lamisma carpeta que el archivo “docker-compose”.
+Una vez autenticado, crear un nuevo reino a partir del archivo My-Realm-realm.json que está en la misma carpeta que el archivo “docker-compose”.
 
 Cada uno de los tres clientes tiene creado un mapper de tipo Group Membership llamado: groups.
 
@@ -56,13 +56,14 @@ Luego, a cada uno de estos usuarios se les deberá asignar un grupo. El usuario 
 
 Una vez creados los usuarios, se puede proceder a levantar los microservicios.
 El orden para levantarlos es:
+
 1. eureka-server (Puerto 8761)
 2. api-gateway-service (Puerto 8080)
 3. movies-api (Puerto 8086), ms-bills (Puerto 8088) y user-service (Puerto8087)- en cualquier orden.
 
 Creé los tres microservicios y les configuré la seguridad para que estos servicios actúen como servidores de recursos y que todos sus endpoints puedan ser consumidos únicamente por usuarios autenticados.
 
-Según lo conversado en clase, Peliculas-Service y Usuarios-Service utilizan el cliente de Keycloak microservicios, mientras que Factuacion-Service utiliza al cliente internal, ya que este servicio no será consumido a través del Api Gateway.
+movies-api y user-service utilizan el cliente de Keycloak microservicios, mientras que ms-bills utiliza al cliente internal, ya que este servicio no será consumido a través del Api Gateway.
 
 Se crea un servicio api-gateway-service para mapear las urls de los servicios Peliculas-Service y Usuarios-Service. El gateway utiliza el cliente de Keycloak api-gateway. Para consumir los recursos de cualquiera de los dos servicios mapeados, el usuario debe primero autenticarse, de esta forma, por ejemplo, si el usuario no está logueado y quiere acceder al endpoint http://localhost:8080/movies el gateway lo va a redirigir al login de Keycloak. Unicamente permitirá acceso a los recursos una vez que el usuario haya sido correctamente autenticado (y suponiendo que cumpla con los criterios de autorización para ese endpoint en particular). Incluí en la configuración del Gateway el filtro de TokenRelay y un circuit breaker por si los servicios no estuvieran disponibles.
 
@@ -71,86 +72,3 @@ Al microservicio Usuarios-Service le agregué la dependencia necesaria para pode
 Al servicio de Facturación-Service ya le había configurado la seguridad para que todos sus endpoints puedan ser consumidos únicamente por usuarios autenticados. Hasta este punto solo usuarios pertenecientes al grupo “provider” podrán dar de alta nuevas facturas. Además, para poder dar de alta nuevas facturas, el token deberá contener el scope facturacion:gestion.
 
 Se incorpora a este servicio la dependencia de Spring Cloud en pom.xml para utilizar Feign, configuré Feign con OAuth2, se establece el interceptor de request para inyectar el token de seguridad en todas las llamadas realizadas por Feign y definí la clase OAuthClientCredentialsFeignManager. Luego creé el endpoint solicitado para que los clientes puedan visualizar todas las facturas asociadas a un usuario de Keycloak y sus datos. Este endpoint únicamente puede ser consumido por usuarios CLIENT. Para crear este endpoint en ms-bills, primero creé un nuevo endopoint en user-service para buscar a un usuario de Keycloak con sus datos por nombre de usuario. Este endpoint también puede ser consumido únicamente por usuarios CLIENT. bills-service se comunica con user-service y consume este endpoint de user-service a través de Feign.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-link de la pagina de emojis ( https://emojipedia.org/apple/ )
-
-[Link descripcion](Link) 
-
-<img src="./img/" alt="700" width="700"/>
-
-| Tecnología      | Fortaleza |
-| --------------- | --------- |
-| Front End       | 🔵 🔵 🔵     |
-| Back End        | 🔵 ⚪ ⚪     |
-| Infraestructura | 🔵 ⚪ ⚪     |
-| Testing / QA    | 🔵 🔵 ⚪     |
-| Bases de datos  | 🔵 ⚪ ⚪     |
-
-
-
- -->
-
-
-***
-
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
