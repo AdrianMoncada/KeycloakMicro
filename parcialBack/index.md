@@ -68,7 +68,7 @@ Levantar los microservicios desde IntelliJ o directamente desde la consola, en e
 5. users-service
 
 
-NOTA: Los ultimos 3 microservicios de la lista anterior pueden ser levantados en cualquier orden. 
+> Nota: Los ultimos 3 microservicios de la lista anterior pueden ser levantados en cualquier orden. 
 
 Se crearon tres microservicios y se configuró la seguridad para que estos servicios actúen como servidores de recursos y que todos sus endpoints puedan ser consumidos únicamente por usuarios autenticados. Movies-api y user-service utilizan el cliente de Keycloak microservicios, mientras que ms-bills utiliza al cliente internal, ya que este servicio no será consumido a través del Api Gateway.
 
@@ -86,7 +86,7 @@ Microservicio de usuarios (users-service)
 | GET         | /users/admin | ROLE_admin | Obtiene una lista de todos los usuarios excepto los que tienen ROLE_admin en Keycloak |
 
 
-> NOTA: Todos los endpoints pueden ser accedidos únicamente a traves del Gateway corriendo en el puerto 9090 y requieren un Access Token válido de Keycloak con los roles correspondientes.
+> Nota: Todos los endpoints pueden ser accedidos únicamente a traves del Gateway corriendo en el puerto 9090 y requieren un Access Token válido de Keycloak con los roles correspondientes.
 
 
 Microservicio de peliculas (movies-api)
