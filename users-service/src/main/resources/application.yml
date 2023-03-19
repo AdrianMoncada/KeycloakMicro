@@ -45,3 +45,11 @@ dh:
     serverUrl: http://localhost:8080
     clientId: internal
     clientSecret: LEI9chHXb3ZPEBb0v4NpLgRibkHGElRw
+
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
