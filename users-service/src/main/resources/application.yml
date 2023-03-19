@@ -1,26 +1,30 @@
+server:
+  port: 8087
+
 spring:
   security:
     oauth2:
       client:
-        registration:
-          keycloak:
-            authorization-grant-type: client_credentials
-            client-id: test
-            client-secret: abc
         provider:
           keycloak:
-            token-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
+            issuer-uri: http://localhost:8080/realms/digitalmedia
+            jwk-set-uri: http://localhost:8080/realms/digitalmedia/protocol/openid-connect/certs
+        registration:
+          keycloack:
+            provider: keycloak
+            client-id: microservicios
+            client-secret: EfTV7vcTXzMbZmKAk3B6gnJNnZ02Mvxd
+            redirect-uri: http://localhost:8087
+
   application:
     name: users-service
+
   data:
     mongodb:
       username: usrmongo
       password: pwdmongo
       database: usermongo
-      port: 27019
+      port: 27020
       host: localhost
   main:
     allow-circular-references: true
@@ -28,13 +32,15 @@ spring:
 app:
   cors:
     allowed-origins: http://localhost:3000
-#
-#eureka:
-#  client:
-#    enabled: false
 
-server:
-  port: 8087
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
 
 #springdoc:
 #  show-actuator: true

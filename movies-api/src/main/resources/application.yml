@@ -1,11 +1,25 @@
+server:
+  port: 8085
+
 spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
   application:
     name: movies-service
+
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/digitalmedia
+            jwk-set-uri: http://localhost:8080/realms/digitalhouse/protocol/openid-connect/certs
+        registration:
+          keycloack:
+            provider: keycloak
+            client-id: microservicios
+            client-secret: EfTV7vcTXzMbZmKAk3B6gnJNnZ02Mvxd
+            redirect-uri: http://localhost:8085
+
+
   data:
     mongodb:
       username: usrmongo
@@ -20,25 +34,10 @@ app:
   cors:
     allowed-origins: http://localhost:3000
 
-#management:
-#  endpoints:
-#    web:
-#      exposure.include: beans, env, health, info, metrics, mappings
-#  endpoint:
-#    health:
-#      show-details: always
-#
-#springdoc:
-#  show-actuator: true
-#  swagger-ui:
-#    groups-order: DESC
-#    disable-swagger-default-url: true
-server:
-  port: 8085
 
-#  eureka:
-#    client:
-#      registerWithEureka: false
-#      fetchRegistry: true
-#      serviceURL:
-#        defaultZone: http://localhost:8761/eureka
+#eureka:
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/

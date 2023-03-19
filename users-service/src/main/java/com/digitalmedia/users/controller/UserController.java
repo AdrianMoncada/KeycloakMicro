@@ -26,6 +26,7 @@ public class UserController {
   }
 
   @GetMapping("/pruebaFeign")
+  @RolesAllowed({"admin"})
   public String funciona(){ return "Funciona!";}
 
 

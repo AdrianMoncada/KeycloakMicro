@@ -1,49 +1,29 @@
+server:
+  port: 8086
+
 spring:
   application:
     name: ms-bill
-  datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-    driverClassName: org.h2.Driver
-    username: sa
-    password: sa
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.H2Dialect
-    open-in-view: false
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+
   security:
     oauth2:
       client:
-        registration:
-          keycloak:
-            authorization-grant-type: client_credentials
-            client-id: test
-            client-secret: abc
         provider:
           keycloak:
-            token-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
+            issuer-uri: http://localhost:8080/realms/digitalmedia
+            jwk-set-uri: http://localhost:8080/realms/digitalmedia/protocol/openid-connect/certs
+        registration:
+          ms-bill:
+            provider: keycloak
+            client-id: internal
+            client-secret: Ml0VzE8xN2cPNIKmHVO6i7ncxkrS4pav
+            redirect-uri: http://localhost:8086/login/oauth2/keycloak
 
-server:
-  port: ${PORT:8086}
-
-eureka:
-  instance:
-    hostname: localhost
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-    enabled: false
-
+  data:
+    mongodb:
+      username: usrmongo
+      password: pwdmongo
+      database: billmongo
+      port: 27019
+      host: localhost
 
