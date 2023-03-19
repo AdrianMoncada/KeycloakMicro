@@ -5,19 +5,19 @@ spring:
   application:
     name: movies-service
 
-  security:
-    oauth2:
-      client:
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8080/realms/digitalmedia
-            jwk-set-uri: http://localhost:8080/realms/digitalhouse/protocol/openid-connect/certs
-        registration:
-          keycloack:
-            provider: keycloak
-            client-id: microservicios
-            client-secret: EfTV7vcTXzMbZmKAk3B6gnJNnZ02Mvxd
-            redirect-uri: http://localhost:8085
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          keycloak:
+#            issuer-uri: http://localhost:8080/realms/digitalmedia
+#            jwk-set-uri: http://localhost:8080/realms/digitalhouse/protocol/openid-connect/certs
+#        registration:
+#          keycloack:
+#            provider: keycloak
+#            client-id: microservicios
+#            client-secret: EfTV7vcTXzMbZmKAk3B6gnJNnZ02Mvxd
+#            redirect-uri: http://localhost:8085
 
 
   data:

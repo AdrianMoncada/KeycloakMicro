@@ -39,14 +39,16 @@ public class MoviesController {
 
 
     @GetMapping
-    @RolesAllowed({"product_read"})
+    @PreAuthorize("hasAnyRole('ROLE_admin', 'ROLE_client')")
     public List<MovieDto> getMovies() {
+        System.out.println("funciona");
         return movieService.getMovies().stream()
                 .map(movieMapper::toMovieDto)
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/{imdbId}")
+    @PreAuthorize("hasAnyRole('ROLE_admin', 'ROLE_client')")
     public MovieDto getMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
         return movieMapper.toMovieDto(movie);
@@ -55,6 +57,7 @@ public class MoviesController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_admin')")
     public MovieDto createMovie(@Valid @RequestBody CreateMovieRequest createMovieRequest) {
         Movie movie = movieMapper.toMovie(createMovieRequest);
         movie = movieService.saveMovie(movie);
@@ -63,6 +66,7 @@ public class MoviesController {
 
 
     @PutMapping("/{imdbId}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public MovieDto updateMovie(@PathVariable String imdbId, @Valid @RequestBody UpdateMovieRequest updateMovieRequest) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
         movieMapper.updateMovieFromDto(updateMovieRequest, movie);
@@ -72,6 +76,7 @@ public class MoviesController {
 
 
     @DeleteMapping("/{imdbId}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public MovieDto deleteMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
         movieService.deleteMovie(movie);
@@ -81,6 +86,7 @@ public class MoviesController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{imdbId}/comments")
+    @PreAuthorize("hasAnyRole('ROLE_admin', 'ROLE_client')")
     public MovieDto addMovieComment(@PathVariable String imdbId, @Valid @RequestBody AddCommentRequest addCommentRequest, Principal principal) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
         Movie.Comment comment = new Movie.Comment(principal.getName(), addCommentRequest.getText(), LocalDateTime.now());

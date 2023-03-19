@@ -21,12 +21,8 @@ public class UserController {
   @Autowired
   private final UserServiceImpl userService ;
 
- /* @GetMapping("/test")
-  @PreAuthorize("hasRole('ROLE_admin')")
-  public String siEsAdmin(){
-    return "Funciona!";
-  }*/
 
+  @PreAuthorize("hasRole('ROLE_admin')")
   @GetMapping("/all")
   public List<User> getUserAll(Principal principal) {
     return userService.getAll();
