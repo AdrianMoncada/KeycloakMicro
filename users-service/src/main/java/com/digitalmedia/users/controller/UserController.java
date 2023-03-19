@@ -20,7 +20,8 @@ public class UserController {
 
   @GetMapping("/admin")
   /*@PreAuthorize("hasRole('ROLE_admin')")*/
-  @RolesAllowed({"product_read"})
+  /*@RolesAllowed({"product_read"})*/
+  @PreAuthorize("hasAuthority('GROUP_admin')")
   public String siEsAdmin(){
     return "Funciona!";
   }
