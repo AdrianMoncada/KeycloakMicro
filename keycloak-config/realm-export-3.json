@@ -514,6 +514,13 @@
       "realmRoles": [
         "default-roles-digital-house"
       ],
+      "clientRoles": {
+        "realm-management": [
+          "query-users",
+          "manage-users",
+          "view-users"
+        ]
+      },
       "notBefore": 0,
       "groups": []
     },
@@ -530,6 +537,13 @@
       "realmRoles": [
         "default-roles-digital-house"
       ],
+      "clientRoles": {
+        "realm-management": [
+          "manage-users",
+          "query-users",
+          "view-users"
+        ]
+      },
       "notBefore": 0,
       "groups": []
     }

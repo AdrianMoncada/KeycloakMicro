@@ -26,7 +26,7 @@ public class UserController {
   }
 
   @GetMapping("/pruebaFeign")
-  @RolesAllowed({"admin"})
+  @PreAuthorize("hasRole('ROLE_admin')")
   public String funciona(){ return "Funciona!";}
 
 
