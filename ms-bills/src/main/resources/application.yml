@@ -1,4 +1,21 @@
 spring:
+  security:
+    oauth2:
+      client:
+#        registration:
+#          keycloak:
+#            authorization-grant-type: client_credentials
+#            client-id: test
+#            client-secret: abc
+        provider:
+          keycloak:
+            token-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
+        registration:
+          keycloak:
+            authorization-grant-type: client_credentials
+            client-id: spring-gateway-client
+            client-secret: 3RhEF8pqKTANrQ6BhfxaYVmcjTXsDK0u
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
   application:
     name: ms-bill
   datasource:
@@ -19,31 +36,31 @@ spring:
     console:
       enabled: true
       path: /h2-console
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak:
-            authorization-grant-type: client_credentials
-            client-id: test
-            client-secret: abc
-        provider:
-          keycloak:
-            token-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          keycloak:
+#            authorization-grant-type: client_credentials
+#            client-id: test
+#            client-secret: abc
+#        provider:
+#          keycloak:
+#            token-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
 
 server:
-  port: ${PORT:8086}
+  port: 8086
 
-eureka:
-  instance:
-    hostname: localhost
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-    enabled: false
+#eureka:
+#  instance:
+#    hostname: localhost
+#    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#    enabled: false
 
 

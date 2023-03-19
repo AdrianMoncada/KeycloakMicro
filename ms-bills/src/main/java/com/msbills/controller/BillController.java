@@ -1,9 +1,11 @@
 package com.msbills.controller;
 
+import com.msbills.client.UserServiceClient;
 import com.msbills.models.Bill;
 import com.msbills.service.BillService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +16,15 @@ import java.util.List;
 public class BillController {
 
   private final BillService service;
+  private final UserServiceClient userServiceClient;
+
+
+  @GetMapping("/bill")
+  @PreAuthorize("hasRole('ROLE_product_read')")
+  public String getBill() {
+    String result = userServiceClient.siEsAdmin();
+    return "Bill result: " + result;
+  }
 
 
 
