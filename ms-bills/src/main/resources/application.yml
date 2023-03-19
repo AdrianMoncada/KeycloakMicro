@@ -10,8 +10,8 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/digitalmedia
-            token-uri: http://localhost:8080/realms/digitalmedia/protocol/openid-connect/token
+            issuer-uri: http://localhost:8080/realms/My-Realm
+            jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
         registration:
           ms-bill:
             provider: keycloak

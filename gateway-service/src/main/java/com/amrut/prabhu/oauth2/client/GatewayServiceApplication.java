@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDeta
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication(exclude = ReactiveUserDetailsServiceAutoConfiguration.class)
-/*@EnableDiscoveryClient*/
+@EnableDiscoveryClient
 public class GatewayServiceApplication {
 
     public static void main(String[] args) {
