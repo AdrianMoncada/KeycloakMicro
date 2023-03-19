@@ -29,7 +29,7 @@ services:
     volumes:
       - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-2-init.js:ro
 
-  mongouserscontenedor:
+  mongobillscontenedor:
     image: mongo
     container_name: mongobillcontenedor
     restart: always

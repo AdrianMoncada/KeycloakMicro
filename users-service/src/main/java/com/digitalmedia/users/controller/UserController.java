@@ -21,21 +21,20 @@ public class UserController {
   @Autowired
   private final UserServiceImpl userService ;
 
-
-  @PreAuthorize("hasRole('ROLE_admin')")
   @GetMapping("/all")
+  @PreAuthorize("hasRole('ROLE_admin')")
   public List<User> getUserAll(Principal principal) {
     return userService.getAll();
   }
 
   @GetMapping("/id/{id}")
   @PreAuthorize("hasRole('ROLE_admin')")
-  public User getUser(@Valid @PathVariable String id) {
-    System.out.println("funciona");
-    return userService.validateAndGetUserExtra(id);
+  public UserKeycloakDTO getUser(@Valid @PathVariable String id) {
+    return userService.getById(id);
   }
 
   @PostMapping("/save")
+  @PreAuthorize("hasRole('ROLE_admin')")
   public User saveUser(@Valid @RequestBody UserRequest updateUserRequest, Principal principal) {
     Optional<User> userOptional = userService.getUserExtra(updateUserRequest.getUsername());
     User userExtra = userOptional.orElseGet(() -> new User(updateUserRequest.getUsername()));
