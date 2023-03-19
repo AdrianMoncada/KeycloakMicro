@@ -24,7 +24,7 @@ Ejecutar el archivo docker-compose.yml con el comando:
 Loguearse en la consola de administración de Keycloak. Crear el reino ***My-Realm*** importando
 las configuraciones con el archivo **My-Realm-realm.json**.
 
-Keycloak se levantará en el puerto 8082:
+Keycloak se levantará en el puerto 8080:
 
 [http://localhost:8080](http://localhost:8080)
 
@@ -50,6 +50,10 @@ Luego, a cada uno de estos usuarios se les deberá asignar un grupo. El usuario 
 Una vez creados los usuarios, se puede proceder a levantar los microservicios.
 
 Crear 3 usuarios (admin,client,provider) con los datos que figuran más adelante en este documento. Agregar cada uno a un grupo (admin, client, provider respectivamente).
+
+
+>ADRIAN, AGREGA LOS SCREENSHOTS QUE TOMASTE AYER PARA QUE EL PROFE NO TENGA EXCUSA!
+
 
 Levantar los microservicios desde IntelliJ o directamente desde la consola, en el siguiente orden:
 
