@@ -12,7 +12,7 @@ Ejecutar el archivo docker-compose.yml con el comando:
 
     docker-compose up
 
-    | Container Name | Image Used                      | Port       | Username | Password |
+| Container Name | Image Used                      | Port       | Username | Password |
 | -------------- | ------------------------------ | ---------- | -------- | -------- |
 | postgres       | postgres:latest                | 5439:5439  | postgres | 1234     |
 | mongomoviescontenedor | mongo                   | 27018:27017 | usrmongo | pwdmongo |
@@ -33,7 +33,7 @@ Ingresar al panel de administración con las credenciales establecidas en el arc
 • username: admin
 • password: admin
 
-Una vez autenticado, crear un nuevo reino importando del archivo My-Realm-realm.json que está en la misma carpeta que el archivo “docker-compose”. Seguir estos pasos:
+Una vez autenticado, crear un nuevo reino importando el archivo My-Realm-realm.json que se encuentra en la misma carpeta que el archivo “docker-compose”. Seguir estos pasos:
 
 1. Hacer click en "Add realm"
 2. Hacer click en "import" e importar el archivo "My-Realm-realm.json"
@@ -86,16 +86,6 @@ Microservicio de usuarios (users-service)
 
 
 Microservicio de peliculas (movies-api)
-
-| HTTP Method | Endpoint                      | Rol                                | Descripción                                                                                                                                                                      |
-|-------------|-------------------------------|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| GET         | /movies                             | ROLE_admin, ROLE_client             | Retrieves a list of all movies.                                                                                                                                                 |
-| GET         | /movies/{imdbId}                     | ROLE_admin, ROLE_client             | Retrieves a specific movie by its imdbId.                                                                                                                                       |
-| POST        | /movies                             | ROLE_admin                          | Creates a new movie with the provided details.                                                                                                                                  |
-| PUT         | /movies/{imdbId}                     | ROLE_admin                          | Updates an existing movie with the provided details.                                                                                                                            |
-| DELETE      | /movies/{imdbId}                     | ROLE_admin                          | Deletes an existing movie.                                                                                                                                                       |
-| POST        | /movies/{imdbId}/comments            | ROLE_admin, ROLE_client             | Adds a comment to a specific movie. The comment's text and the author's name (obtained from Principal) are provided in the request body, along with the movie's imdbId in the URL. |
-
 
 | HTTP Method | Endpoint                      | Rol                                | Descripción                                                                                                                                                                      |
 |-------------|-------------------------------|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
