@@ -1,0 +1,64 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay
+      routes:
+        - id: product-resource-server
+          uri: http://localhost:9191
+          predicates:
+            - Path=/product/**
+        - id: movies-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/movies/**
+        - id: users-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/users/**
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/digitalmedia
+            jwk-set-uri: http://localhost:8080/realms/digitalmedia/protocol/openid-connect/certs
+            # Individual properties can also be provided this way
+#            token-uri: http://localhost:8080/auth/realms/amrutrealm/protocol/openid-connect/token
+#            authorization-uri: http://localhost:8080/auth/realms/amrutrealm/protocol/openid-connect/auth
+#            userinfo-uri: http://localhost:8080/auth/realms/amrutrealm/protocol/openid-connect/userinfo
+#            user-name-attribute: preferred_username
+        registration:
+          api-gateway:
+            provider: keycloak
+            client-id: api-gateway
+            client-secret: sge2jW65lmPAQ6fB79ahu1zF0XwSXEUZ
+            redirect-uri: http://localhost:9090/login/oauth2/code/keycloak
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    enabled: true
+
+# Enable these to debug the Authorization flow
+logging:
+    level:
+      org:
+        springframework:
+          security:
+            web: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
