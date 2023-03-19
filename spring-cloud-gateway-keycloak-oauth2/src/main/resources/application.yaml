@@ -20,13 +20,13 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/digitalmedia
-            jwk-set-uri: http://localhost:8080/realms/digitalmedia/protocol/openid-connect/certs
+            issuer-uri: http://localhost:8080/realms/My-Realm
+            jwk-set-uri: http://localhost:8080/realms/My-Realm/protocol/openid-connect/certs
         registration:
           api-gateway:
             provider: keycloak
-            client-id: api-gateway
-            client-secret: sge2jW65lmPAQ6fB79ahu1zF0XwSXEUZ
+            client-id: spring-gateway-client
+            client-secret: 3RhEF8pqKTANrQ6BhfxaYVmcjTXsDK0u
             redirect-uri: http://localhost:9090/login/oauth2/code/keycloak
 
 

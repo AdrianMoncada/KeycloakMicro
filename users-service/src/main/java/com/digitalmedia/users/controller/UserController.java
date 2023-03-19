@@ -1,50 +1,56 @@
 package com.digitalmedia.users.controller;
 
 import com.digitalmedia.users.model.User;
+import com.digitalmedia.users.model.dto.UserKeycloakDTO;
 import com.digitalmedia.users.model.dto.UserRequest;
-import com.digitalmedia.users.service.IUserService;
+import com.digitalmedia.users.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
 public class UserController {
-  private final IUserService userService;
 
-  @GetMapping("/admin")
-  /*@PreAuthorize("hasRole('ROLE_admin')")*/
-  /*@RolesAllowed({"product_read"})*/
-  @PreAuthorize("hasAuthority('GROUP_admin')")
+  @Autowired
+  private final UserServiceImpl userService ;
+
+ /* @GetMapping("/test")
+  @PreAuthorize("hasRole('ROLE_admin')")
   public String siEsAdmin(){
     return "Funciona!";
+  }*/
+
+  @GetMapping("/all")
+  public List<User> getUserAll(Principal principal) {
+    return userService.getAll();
   }
 
-  @GetMapping("/pruebaFeign")
+  @GetMapping("/id/{id}")
   @PreAuthorize("hasRole('ROLE_admin')")
-  public String funciona(){ return "Funciona!";}
-
-
-  @GetMapping("/me")
-  @PreAuthorize("hasRole('ROLE_admin') AND hasAutority('GROUP_admin')")
-  public User getUserExtra(@RequestParam String principal) {
-    return userService.validateAndGetUserExtra(principal);
+  public User getUser(@Valid @PathVariable String id) {
+    System.out.println("funciona");
+    return userService.validateAndGetUserExtra(id);
   }
 
-  @PostMapping("/me")
-  public User saveUserExtra(@Valid @RequestBody UserRequest updateUserRequest, @RequestParam(value = "principal") String principal) {
-    Optional<User> userOptional = userService.getUserExtra(principal);
-    User userExtra = userOptional.orElseGet(() -> new User(principal));
+  @PostMapping("/save")
+  public User saveUser(@Valid @RequestBody UserRequest updateUserRequest, Principal principal) {
+    Optional<User> userOptional = userService.getUserExtra(updateUserRequest.getUsername());
+    User userExtra = userOptional.orElseGet(() -> new User(updateUserRequest.getUsername()));
+    userExtra.setLastname(updateUserRequest.getLastname());
     userExtra.setAvatar(updateUserRequest.getAvatar());
     return userService.saveUserExtra(userExtra);
   }
 
-
-
+  @GetMapping("/admin")
+  @PreAuthorize("hasRole('ROLE_admin')")
+  public List<UserKeycloakDTO> getAllUserKeycloakNotAdmin(){
+    return userService.getAllDBKeycloak();
+  }
 }

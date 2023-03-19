@@ -8,4 +8,8 @@ public class UserRequest {
 
     @Schema(example = "avatar")
     private String avatar;
+    @Schema(example = "username")
+    private String username;
+    @Schema(example = "lastname")
+    private String lastname;
 }

@@ -42,7 +42,7 @@ services:
     expose:
       - 27017
     volumes:
-      - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   mongousercontenedor:
     image: mongo
@@ -57,7 +57,7 @@ services:
     expose:
       - 27017
     volumes:
-      - ./mongo-2-init.js:/docker-entrypoint-initdb.d/mongo-2-init.js:ro
+      - ./mongo-3-init.js:/docker-entrypoint-initdb.d/mongo-3-init.js:ro
 
   keycloak:
     depends_on:

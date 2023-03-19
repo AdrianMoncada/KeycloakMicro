@@ -1,56 +1,65 @@
-server:
+Server:
   port: 8087
 
 spring:
+  application:
+    name: users-service
+#  eureka:
+#    client:
+#      enabled: true
+#      service-url:
+#        defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017/usersdb
+#      username: admin
+#      password: admin
+#      database: tp_pi
+#      port: 27017
+#      host: mongodb #localhost
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          format_sql: true
+          dialect: org.hibernate.dialect.H2Dialect
+      open-in-view: false
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+  main:
+    allow-circular-references: true
   security:
     oauth2:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/digitalmedia
-            jwk-set-uri: http://localhost:8080/realms/digitalmedia/protocol/openid-connect/certs
+            issuer-uri: http://localhost:8080/realms/My-Realm
         registration:
-          keycloack:
-            provider: keycloak
-            client-id: microservicios
-            client-secret: EfTV7vcTXzMbZmKAk3B6gnJNnZ02Mvxd
-            redirect-uri: http://localhost:8087
+          keycloak:
+            client-id: spring-gateway-client
+            client-secret: 3RhEF8pqKTANrQ6BhfxaYVmcjTXsDK0u
+            scope: openid
+            redirect_uri: http://localhost:8087
+            realm: My-Realm
+            serverUrl: http://localhost:8080
 
-  application:
-    name: users-service
-
-  data:
-    mongodb:
-      username: usrmongo
-      password: pwdmongo
-      database: usermongo
-      port: 27020
-      host: localhost
-  main:
-    allow-circular-references: true
 
 app:
   cors:
     allowed-origins: http://localhost:3000
 
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-
-
-#springdoc:
-#  show-actuator: true
-#  swagger-ui:
-#    groups-order: DESC
-#    disable-swagger-default-url: true
-#management:
-#  endpoints:
-#    web:
-#      exposure.include: beans, env, health, info, metrics, mappings
-#  endpoint:
-#    health:
-#      show-details: always
+dh:
+  keycloakInternal:
+    realm: My-Realm
+    serverUrl: http://localhost:8080
+    clientId: internal
+    clientSecret: LEI9chHXb3ZPEBb0v4NpLgRibkHGElRw
