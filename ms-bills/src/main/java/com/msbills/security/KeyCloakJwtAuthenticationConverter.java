@@ -1,4 +1,4 @@
-package com.msbills.configuration;
+package com.msbills.security;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
