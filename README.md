@@ -39,8 +39,6 @@ Una vez autenticado, crear un nuevo reino importando el archivo My-Realm-realm.j
 2. Hacer click en "import" e importar el archivo "My-Realm-realm.json"
 3. Hacer click en "Create"
 
-Cada uno de los tres clientes tiene creado un mapper de tipo Group Membership llamado: groups.
-
 En el reino, se crean tres grupos: admin, client y provider. Cada uno de estos tres grupos debe tener un rol (admin, client y provider respectivamente).
 
 Para el correcto funcionamiento, se deberá crear tres usuarios con username y password ya que los usuarios no se guardan en el archivo .json al exportar/importar el reino de Keycloak.
