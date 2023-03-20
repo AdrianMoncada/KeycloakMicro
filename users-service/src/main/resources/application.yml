@@ -4,11 +4,6 @@ Server:
 spring:
   application:
     name: users-service
-#  eureka:
-#    client:
-#      enabled: true
-#      service-url:
-#        defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
   data:
     mongodb:
       username: usrmongo
@@ -44,12 +39,12 @@ dh:
     realm: My-Realm
     serverUrl: http://localhost:8080
     clientId: internal
-    clientSecret: LEI9chHXb3ZPEBb0v4NpLgRibkHGElRw
+    clientSecret: URYRGIFGe7ho3lDiHS16zvMit7iUyw0o
 
 
 eureka:
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
