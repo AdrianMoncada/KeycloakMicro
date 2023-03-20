@@ -49,11 +49,31 @@ Luego, a cada uno de estos usuarios se les deberá asignar un grupo. El usuario 
 
 Una vez creados los usuarios, se puede proceder a levantar los microservicios.
 
-Crear 3 usuarios (admin,client,provider) con los datos que figuran más adelante en este documento. Agregar cada uno a un grupo (admin, client, provider respectivamente).
+Crear 3 usuarios (admin,client,provider) con los datos que figuran más adelante en este documento. Agregar cada uno a su grupo (admin, client, provider respectivamente).
 
+| Username| Password | Rol |
+|-------------|----------|------|
+|client|client|client|
+|admin|admin|admin|
+|provider|provider|provider|
 
->ADRIAN, AGREGA LOS SCREENSHOTS QUE TOMASTE AYER PARA QUE EL PROFE NO TENGA EXCUSA!
+Ejemplo: usuario admin
 
+Se escribe el username:
+
+<img src="./img/username.jpeg" alt="700" width="700"/>
+
+Se asigna contraseña en credentials, seleccionando la opción temporary en off:
+
+<img src="./img/password.jpeg" alt="700" width="700"/>
+
+Se asigna el rol correspondiente:
+
+<img src="./img/username.jpeg" alt="700" width="700"/>
+
+Y el grupo que corresponge, en este caso admin:
+
+<img src="./img/grupo.jpeg" alt="700" width="700"/>
 
 Levantar los microservicios desde IntelliJ o directamente desde la consola, en el siguiente orden:
 
