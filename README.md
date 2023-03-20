@@ -1,6 +1,6 @@
-# Seguridad en Microserrvicios
+# Seguridad en Microservicios
 
-**Alumno:** ***YUNO AL CUARTO***
+**Alumno:** ***YUNO AL CUARTO**
 
 ## Parcial
 
@@ -33,7 +33,7 @@ Ingresar al panel de administración con las credenciales establecidas en el arc
 • username: admin
 • password: admin
 
-Una vez autenticado, crear un nuevo reino importando el archivo My-Realm-realm.json que se encuentra en la misma carpeta que el archivo “docker-compose”. Seguir estos pasos:
+Una vez autenticado, crear un nuevo reino importando el archivo My-Realm-realm.json que se encuentra en la carpeta qkeycloak-config. Seguir estos pasos:
 
 1. Hacer click en "Add realm"
 2. Hacer click en "import" e importar el archivo "My-Realm-realm.json"
